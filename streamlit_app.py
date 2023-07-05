@@ -44,7 +44,7 @@ try:
       streamlit.dataframe(back_from_function)
 except URLError as e:
   streamlit.error()
-streamlit.stop()
+# streamlit.stop()
 #importing 
 import snowflake.connector
 streamlit.text("The fruit load list contains:")
@@ -62,7 +62,7 @@ if streamlit.button('Get fruit load list'):
      streamlit.dataframe(my_data_row)
      #my_cur = my_cnx.cursor()
      #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-
+streamlit.stop()
 # my_cur.execute("USE ROLE ACCOUNTADMIN")
 # my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
 #my_data_row = my_cur.fetchone()
