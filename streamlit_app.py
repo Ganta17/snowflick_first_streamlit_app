@@ -59,6 +59,7 @@ def get_fruit_load_list():
 if streamlit.button('Get fruit load list'):
      my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
      my_data_row = get_fruit_load_list()
+     my_cnx.close()
      streamlit.dataframe(my_data_row)
      #my_cur = my_cnx.cursor()
      #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
@@ -74,7 +75,7 @@ if streamlit.button('Get fruit load list'):
 def insert_row_snowflake(new_fruit):
       with my_cnx.cursor() as my_cur:
            my_cur.execute("USE ROLE ACCOUNTADMIN")
-           my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values('from streamlit')")
+           my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values('jackfruit'),('papaya'),('guava'),('kiwi')")
            return 'Thanks for adding '+new_fruit
      
 fruit_choice_1 = streamlit.text_input('What fruit would you like to add?')
